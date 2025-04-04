@@ -205,7 +205,7 @@ int main()
     else if(x <= 40){
         printf("No use........ Not even 5 questions right");
     }
-
+    system("pause");
     return 0;
 
 }
