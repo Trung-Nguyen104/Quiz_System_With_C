@@ -6,6 +6,7 @@ int main()
 {
     int x = 0;
     char ch1[100],ch2,ch3,ch4,ch5,ch6,ch7,ch8,ch9,ch10,ch11;
+    printf("LOLLLLLLLLLLLLLLLLLLLLLLLLLl");
     printf("Enter Your Name: ");
     scanf("%[^\n]", ch1);
     getchar();
