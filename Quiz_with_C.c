@@ -1,211 +1,92 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<conio.h>
-//CODEWITHC.COM
-int main()
-{
-    int x = 0;
-    char ch1[100],ch2,ch3,ch4,ch5,ch6,ch7,ch8,ch9,ch10,ch11;
-    printf("Enter Your Name: ");
-    scanf("%[^\n]", ch1);
-    getchar();
-    system("cls");
-    printf("Welcome %s\n", ch1);
-    printf("What is called as ' THE HOLY LAND'?\n");
-    printf("a.Jerusalem\nb.Mathura\nc.Mecca");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch2);
-    getchar();
-    if(ch2=='a')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+#define TOTAL_QUESTIONS 10
+
+typedef struct {
+    char question[100];
+    char options[3][50];
+    char correctAnswer;
+} Question;
+
+void saveResult(const char *name, int score) {
+    FILE *file = fopen("history.txt", "a");
+    if (file == NULL) {
+        printf("Lỗi khi lưu điểm!\n");
+        return;
     }
-    else
-    {
-        printf("Sorry wrong answer.");
+    fprintf(file, "Người chơi: %s - Điểm: %d\n", name, score);
+    fclose(file);
+}
+
+char getUserAnswer() {
+    char answer;
+    scanf(" %c", &answer);
+    return tolower(answer);
+}
+
+void askQuestion(Question q, int *score) {
+    char userAnswer;
+    printf("\n%s\n", q.question);
+    printf("a. %s\nb. %s\nc. %s\n", q.options[0], q.options[1], q.options[2]);
+    printf("Nhập đáp án của bạn: ");
+    
+    userAnswer = getUserAnswer();
+
+    if (userAnswer == q.correctAnswer) {
+        *score += 10;
+        printf("🎉 Đúng rồi! Điểm hiện tại: %d\n", *score);
+    } else {
+        printf("❌ Sai rồi! Đáp án đúng là: %c. %s\n", q.correctAnswer, q.options[q.correctAnswer - 'a']);
+    }
+}
+
+int main() {
+    int score = 0;
+    char playerName[100];
+    
+    printf("Nhập tên của bạn: ");
+    scanf("%[^\n]", playerName);
+    getchar();
+    
+    Question questions[TOTAL_QUESTIONS] = {
+        {"THE HOLY LAND là gì?", {"Jerusalem", "Mathura", "Mecca"}, 'a'},
+        {"THE ROOF OF THE WORLD là gì?", {"Nepal", "Rome", "Tibet"}, 'c'},
+        {"THE LAND OF RISING SUN là gì?", {"Chicago", "Japan", "Tibet"}, 'b'},
+        {"THE GIFT OF NILE là gì?", {"Chicago", "Egypt", "Africa"}, 'b'},
+        {"THE LAND OF MIDNIGHT SUN là gì?", {"Norway", "Japan", "Australia"}, 'a'},
+        {"THE LAND OF THUNDERBOLT là gì?", {"Bhutan", "Canada", "Arab"}, 'a'},
+        {"THE WINDY CITY là gì?", {"Jerusalem", "Japan", "Chicago"}, 'c'},
+        {"THE LAND OF WHITE ELEPHANTS là gì?", {"Bangladesh", "Thailand", "India"}, 'b'},
+        {"THE CITY OF SEVEN HILLS là gì?", {"Rome", "Nilgiri Hills", "Tibet"}, 'a'},
+        {"THE DARK CONTINENT là gì?", {"Asia", "Australia", "Africa"}, 'c'}
+    };
+
+    for (int i = 0; i < TOTAL_QUESTIONS; i++) {
+        system("cls"); // Windows, nếu Linux thì dùng system("clear");
+        askQuestion(questions[i], &score);
         getchar();
     }
 
     system("cls");
-    printf("What is called as ' THE ROOF OF THE WORLD'?\n");
-    printf("a.Nepal\nb.Rome\nc.Tibet");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch3);
-    getchar();
-    if(ch3=='c')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
+    printf("\n🎯 KẾT QUẢ 🎯\n");
+    printf("Tên người chơi: %s\n", playerName);
+    printf("Điểm tổng: %d/%d\n", score, TOTAL_QUESTIONS * 10);
+    printf("Bạn trả lời đúng %d/%d câu (%.2f%%)\n", score / 10, TOTAL_QUESTIONS, (float)score / (TOTAL_QUESTIONS * 10) * 100);
+
+    saveResult(playerName, score);
+
+    char replay;
+    printf("\nBạn có muốn chơi lại không? (y/n): ");
+    scanf(" %c", &replay);
+    if (tolower(replay) == 'y') {
+        system("cls");
+        main();
+    } else {
+        printf("Cảm ơn bạn đã chơi! 🎉\n");
     }
 
-    system("cls");
-    printf("What is called as ' THE LAND OF RISING SUN'?\n");
-    printf("a.Chicago\nb.Japan\nc.Tibet");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch4);
-    getchar();
-    if(ch4=='b')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-
-    system("cls");
-    printf("What is called as ' THE GIFT OF NILE'?\n");
-    printf("a.Chicago\nb.Egypt\nc.Africa");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch5);
-    getchar();
-    if(ch5=='b')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-
-    system("cls");
-    printf("What is called as ' THE LAND OF MIDNIGHT SUN'?\n");
-    printf("a.Norway\nb.Japan\nc.Australia");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch6);
-    getchar();
-    if(ch6=='a')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-
-    system("cls");
-    printf("What is called as ' THE LAND OF THUNDERBOLT'?\n");
-    printf("a.Bhutan\nb.Canada\nc.Arab");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch7);
-    getchar();
-    if(ch7=='a')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-
-    system("cls");
-    printf("What is called as ' THE WINDY CITY?\n");
-    printf("a.Jerusalem\nb.Japan\nc.Chicago");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch8);
-    getchar();
-    if(ch8=='c')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-
-    system("cls");
-    printf("What is called as ' THE LAND OF WHITE ELEPHANTS'?\n");
-    printf("a.Bangladesh\nb.Thailand\nc.India");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch9);
-    getchar();
-    if(ch9=='b')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d\n", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-
-    system("cls");
-    printf("What is called as ' THE CITY OF SEVEN HILLS'?\n");
-    printf("a.Rome\nb.Nilgiri Hills\nc.Tibet");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch10);
-    getchar();
-    if(ch10=='a')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-
-    system("cls");
-    printf("What is called as ' THE DARK CONTIENENT'?\n");
-    printf("a.Asia\nb.Australia\nc.Africa");
-    printf("\nEnter your answer: ");
-    scanf("%c", &ch11);
-    getchar();
-    if(ch11=='c')
-    {
-        x = x + 10;
-        printf("Good Job. Your score is %d", x);
-        getchar();
-    }
-    else
-    {
-        printf("Sorry wrong answer.");
-        getchar();
-    }
-    system("cls");
-    if(x == 100) {
-        printf("No cheating...... You have done this earlier also.");
-    }
-    if(x == 90){
-        printf("You are extremely intelligent. Your Score is 90");
-    }
-    if(x == 80){
-        printf("You are intelligent. Your Score is 80");
-    }
-    if(50 == x || x == 70 || x == 60) {
-        printf("You are average. Your Score is %d. Better luck next time\n", x);
-    }
-    else if(x <= 40){
-        printf("No use........ Not even 5 questions right");
-    }
-    system("pause");
     return 0;
-
 }
