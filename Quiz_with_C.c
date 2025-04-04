@@ -75,7 +75,22 @@ int main() {
     printf("Tên người chơi: %s\n", playerName);
     printf("Điểm tổng: %d/%d\n", score, TOTAL_QUESTIONS * 10);
     printf("Bạn trả lời đúng %d/%d câu (%.2f%%)\n", score / 10, TOTAL_QUESTIONS, (float)score / (TOTAL_QUESTIONS * 10) * 100);
-
+    printf("\n🎯 KẾT QUẢ 🎯\n");
+    printf("Tên người chơi: %s\n", playerName);
+    printf("Điểm tổng: %d/%d\n", score, TOTAL_QUESTIONS * 10);
+    printf("Bạn trả lời đúng %d/%d câu (%.2f%%)\n", score / 10, TOTAL_QUESTIONS, (float)score / (TOTAL_QUESTIONS * 10) * 100);    printf("\n🎯 KẾT QUẢ 🎯\n");
+    printf("Tên người chơi: %s\n", playerName);
+    printf("Điểm tổng: %d/%d\n", score, TOTAL_QUESTIONS * 10);
+    printf("Bạn trả lời đúng %d/%d câu (%.2f%%)\n", score / 10, TOTAL_QUESTIONS, (float)score / (TOTAL_QUESTIONS * 10) * 100);    printf("\n🎯 KẾT QUẢ 🎯\n");
+    printf("Tên người chơi: %s\n", playerName);
+    printf("Điểm tổng: %d/%d\n", score, TOTAL_QUESTIONS * 10);
+    printf("Bạn trả lời đúng %d/%d câu (%.2f%%)\n", score / 10, TOTAL_QUESTIONS, (float)score / (TOTAL_QUESTIONS * 10) * 100);    printf("\n🎯 KẾT QUẢ 🎯\n");
+    printf("Tên người chơi: %s\n", playerName);
+    printf("Điểm tổng: %d/%d\n", score, TOTAL_QUESTIONS * 10);
+    printf("Bạn trả lời đúng %d/%d câu (%.2f%%)\n", score / 10, TOTAL_QUESTIONS, (float)score / (TOTAL_QUESTIONS * 10) * 100);    printf("\n🎯 KẾT QUẢ 🎯\n");
+    printf("Tên người chơi: %s\n", playerName);
+    printf("Điểm tổng: %d/%d\n", score, TOTAL_QUESTIONS * 10);
+    printf("Bạn trả lời đúng %d/%d câu (%.2f%%)\n", score / 10, TOTAL_QUESTIONS, (float)score / (TOTAL_QUESTIONS * 10) * 100);
     saveResult(playerName, score);
 
     char replay;
